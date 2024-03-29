@@ -1,7 +1,7 @@
 import os
 from flask import Flask, request, g
 
-print("jenkins api deneme basliyor...")
+print("jenkins api deneme2 basliyor...")
 
 
 
