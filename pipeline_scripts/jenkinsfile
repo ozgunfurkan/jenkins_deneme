@@ -15,6 +15,7 @@ pipeline{
             steps{
                 dir("C:\\Users\\TCFUOZGUN\\Desktop"){
                     bat "mkdir jenkins"
+                    bat "git clone https://github.com/ozgunfurkan/jenkins_deneme.git C:\\Users\\TCFUOZGUN\\Desktop\\jenkins"
                     echo "proje çekildi"
 
 
