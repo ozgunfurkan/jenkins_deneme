@@ -1,0 +1,52 @@
+pipeline{
+    agent any
+    environment {
+        GIT_SSL_NO_VERIFY = 'true' // Git SSL doğrulamasını devre dışı bırak
+    }
+    stages{
+        stage("Clean Up"){
+            steps{
+                dir("C:\\Users\\TCFUOZGUN\\Desktop\\jenkins"){
+                    deleteDir()
+                }
+            }
+        }
+        stage("Clone Latest"){
+            steps{
+                dir("C:\\Users\\TCFUOZGUN\\Desktop"){
+                    bat "mkdir jenkins"
+                    echo "proje çekildi"
+
+
+                }
+            }
+        }
+        stage("Create Venv"){
+            steps{
+                dir("C:\\Users\\TCFUOZGUN\\Desktop\\jenkins"){
+                    bat "python -m virtualenv env"
+                    echo "virtual env activate oluşturuldu"
+
+                }
+            }
+        }
+        stage("Install Dependencies"){
+            steps{
+                dir("C:\\Users\\TCFUOZGUN\\Desktop\\jenkins\\env\\Scripts"){
+                        bat "activate"
+                        bat "pip install -r ../../requirements.txt"
+                        echo "virtual env activate edildi ve proje bağımlılıkları yüklendi"
+                }
+            }
+        }
+        stage("Build"){
+            steps{
+                dir("C:\\Users\\TCFUOZGUN\\Desktop\\jenkins"){
+                        bat "start python jenkins_deneme.py"
+                        echo "Proje başarıyla deploy edildi"
+                        exit 1
+                }
+            }
+        }
+    }
+}
